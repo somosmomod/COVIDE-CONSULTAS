@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>COVIDE · Consultas</title>
-<meta name="theme-color" content="#2641D9">
+<meta name="theme-color" content="#75AADB">
 <meta name="description" content="Consultá el Reglamento de Convivencia y el Estatuto de la cooperativa.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
@@ -12,38 +12,43 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head><body>
-<header class="top">
-  <div class="brand">
-    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#2641D9"/><path d="M16 6 5.5 15H9v10h14V15h3.5z" fill="#FFC83D"/><rect x="14" y="18" width="4" height="7" fill="#2641D9"/></svg>
-    <div><b>COVIDE</b><span>Consultas de la cooperativa</span></div>
-  </div>
-  <button id="inst" class="ghost" hidden>Instalar</button>
+<div class="flag" aria-hidden="true"></div>
+<header class="top glass">
+  <button class="brand" id="home" aria-label="Volver al inicio">
+    <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#75AADB"/><circle cx="22" cy="11" r="4.5" fill="#F9C80E"/><path d="M0 24 9 19 16 11 22 14 32 23V32H0z" fill="#123C69"/></svg>
+    <span><b>COVIDE</b><small>Cerro · Consultas de la cooperativa</small></span>
+  </button>
+  <button id="inst" class="ghost">Instalar</button>
   <button id="theme" class="ghost" aria-label="Cambiar entre tema claro y oscuro">◐</button>
 </header>
-<nav class="seg main" aria-label="Secciones">
+<nav class="seg main glass" aria-label="Secciones">
   <button data-v="chat" aria-pressed="true">Consultar</button>
   <button data-v="docs" aria-pressed="false">Documentos</button>
 </nav>
 <main id="scroll"><div class="wrap">
   <section id="vchat">
-    <div id="hero">
-      <h1>¿Qué querés saber de la cooperativa?</h1>
-      <p>Escribí tu pregunta y te mostramos qué dicen el Reglamento de Convivencia y el Estatuto, con el artículo.</p>
+    <div id="hero"><div class="hero-in">
+      <div class="panel">
+        <h1>¿Qué querés saber de la cooperativa?</h1>
+        <p>Escribí tu pregunta y te mostramos qué dicen el Reglamento de Convivencia y el Estatuto, con el artículo.</p>
+        <div id="scene"></div>
+      </div>
       <div id="chips"></div>
-    </div>
+    </div></div>
     <div id="chat"></div>
   </section>
   <section id="vdocs" hidden>
-    <div class="seg dsel" style="margin:8px 0"><button data-d="reg" aria-pressed="true">Reglamento de Convivencia</button><button data-d="est" aria-pressed="false">Estatuto</button></div>
+    <div class="seg dsel glass" style="margin:8px 0"><button data-d="reg" aria-pressed="true">Reglamento de Convivencia</button><button data-d="est" aria-pressed="false">Estatuto</button></div>
     <div id="fltbar"><input id="flt" type="search" placeholder="Buscar una palabra en este documento" aria-label="Buscar en el documento"></div>
     <div id="dlist"></div>
   </section>
 </div></main>
-<form id="f" autocomplete="off">
+<form id="f" class="glass" autocomplete="off">
   <input id="q" type="text" placeholder="Escribí tu consulta…" aria-label="Tu consulta" enterkeyhint="send">
   <button id="go" aria-label="Enviar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
 </form>
 <p class="fine">Orientativo. Ante dudas, consultá al Consejo Directivo.</p>
+<dialog id="help"><h3>Instalar la app</h3><div id="how"></div><button class="ghost" id="hx">Entendido</button></dialog>
 <script src="config.js"></script>
 <script src="search.js"></script>
 <script src="app.js"></script>

@@ -24,3 +24,9 @@ La clave de Anthropic nunca va en la página: la guarda el Worker.
 Los textos están en `data.json` (una entrada por artículo: `doc`, `num`, `title`, `text`). Editá, subí el cambio a GitHub y los socios ven la versión nueva al abrir la app.
 
 Nota: los textos fueron resumidos a partir de escaneos. Conviene revisarlos contra el papel antes de difundir.
+
+## Si no te deja instalar
+- Abrí el enlace en Chrome (Android) o Safari (iPhone). Desde WhatsApp, Facebook o Instagram el navegador interno no permite instalar: tocá ⋮ → "Abrir en el navegador".
+- Verificá en GitHub que existan `manifest.webmanifest`, `sw.js` y la carpeta `icons/` con sus 4 archivos (la carpeta a veces no sube al arrastrar).
+- La vista previa de claude.ai no se puede instalar; solo la versión de GitHub Pages.
+- iPhone: Compartir → "Agregar a inicio". Android: ⋮ → "Instalar app". El botón "Instalar" de la app muestra estos pasos.
