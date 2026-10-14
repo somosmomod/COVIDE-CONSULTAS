@@ -7,7 +7,7 @@
 <meta name="description" content="Consultá el Reglamento de Convivencia y el Estatuto de la cooperativa.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -31,14 +31,13 @@
       <div class="panel">
         <h1>¿Qué querés saber de la cooperativa?</h1>
         <p>Escribí tu pregunta y te mostramos qué dicen el Reglamento de Convivencia y el Estatuto, con el artículo.</p>
-        <div id="scene"></div>
       </div>
       <div id="chips"></div>
     </div></div>
     <div id="chat"></div>
   </section>
   <section id="vdocs" hidden>
-    <div class="seg dsel glass" style="margin:8px 0"><button data-d="reg" aria-pressed="true">Reglamento de Convivencia</button><button data-d="est" aria-pressed="false">Estatuto</button></div>
+    <div class="seg dsel glass" style="margin:8px 0"><button data-d="reg" aria-pressed="true">Reglamento</button><button data-d="est" aria-pressed="false">Estatuto</button><button data-d="x" aria-pressed="false">Actas y más</button></div>
     <div id="fltbar"><input id="flt" type="search" placeholder="Buscar una palabra en este documento" aria-label="Buscar en el documento"></div>
     <div id="dlist"></div>
   </section>
@@ -47,8 +46,15 @@
   <input id="q" type="text" placeholder="Escribí tu consulta…" aria-label="Tu consulta" enterkeyhint="send">
   <button id="go" aria-label="Enviar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
 </form>
-<p class="fine">Orientativo. Ante dudas, consultá al Consejo Directivo.</p>
+<p class="fine">Orientativo. Ante dudas, consultá al Consejo Directivo. · <button id="ver" class="linkb"></button></p>
 <dialog id="help"><h3>Instalar la app</h3><div id="how"></div><button class="ghost" id="hx">Entendido</button></dialog>
+<dialog id="adm"><h3>Agregar documento</h3>
+  <input id="atit" placeholder="Título (ej. Acta de Asamblea Ordinaria 2026)" aria-label="Título"><input id="adate" type="date" aria-label="Fecha del documento">
+  <p class="lead">Subí un PDF o fotos de las hojas y la IA lee el texto, o pegá el texto directamente.</p>
+  <input id="afile" type="file" accept="application/pdf,image/*" multiple><button class="ghost" id="aread" style="margin-bottom:8px">Leer con IA</button>
+  <textarea id="atxt" rows="8" placeholder="Texto del documento" aria-label="Texto del documento"></textarea>
+  <p id="ast" class="lead" role="status"></p>
+  <div class="row"><button class="ghost" id="ax">Cancelar</button><button class="ghost pri" id="apub">Publicar para todos</button></div></dialog>
 <script src="config.js"></script>
 <script src="search.js"></script>
 <script src="app.js"></script>

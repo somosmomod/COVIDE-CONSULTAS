@@ -1,32 +1,33 @@
 # COVIDE · Consultas
 
-App instalable (PWA) para consultar el Reglamento de Convivencia y el Estatuto de la cooperativa.
-Funciona sin servidor: la búsqueda corre en el teléfono y anda sin internet. Las respuestas redactadas con IA son opcionales.
+App instalable (PWA) para consultar el Reglamento de Convivencia, el Estatuto y las actas de la cooperativa.
 
-## 1. Publicar en GitHub Pages (gratis)
-1. Creá un repositorio nuevo y subí todo el contenido de esta carpeta (menos `worker/` si querés).
-2. En el repositorio: Settings → Pages → Source: "Deploy from a branch" → Branch: `main` / carpeta `/ (root)` → Save.
-3. En 1 o 2 minutos queda en `https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/`. Compartí ese enlace con los socios.
-4. Para instalarla: en Android, el botón "Instalar" o menú del navegador → "Instalar app". En iPhone: Compartir → "Agregar a inicio".
+## 1. Publicar en GitHub Pages
+1. Subí el contenido de esta carpeta (con `icons/`) a un repositorio público.
+2. Settings → Pages → Deploy from a branch → `main` / root → Save.
+3. Queda en `https://TU-USUARIO.github.io/NOMBRE-DEL-REPO/`.
+Sin más pasos ya funciona la búsqueda por palabras (sin IA).
 
-Con esto ya funciona la búsqueda local. Si querés respuestas redactadas, seguí el paso 2.
+## 2. Activar la IA que interpreta y cita (Worker de Cloudflare)
+La IA lee la consulta, interpreta los documentos y responde con citas. La clave queda guardada en el Worker, nunca en la página.
+1. Cloudflare (cuenta gratis) → Workers & Pages → Create → Worker → pegá `worker/worker.js` → Deploy.
+2. Workers & Pages → KV → Create namespace (ej. `covide-docs`). En el Worker: Settings → Bindings → Add → KV namespace → nombre de variable: `DOCS`.
+3. En el Worker: Settings → Variables and Secrets:
+   - `ANTHROPIC_API_KEY` (Secret): tu clave de console.anthropic.com (poné un tope mensual de gasto allí).
+   - `ACCESS_CODE`: código para los socios (se pide una vez por teléfono).
+   - `ADMIN_CODE`: código distinto, solo para quienes cargan documentos.
+   - `ALLOWED_ORIGIN`: `https://TU-USUARIO.github.io`
+   - `SITE_URL`: `https://TU-USUARIO.github.io/NOMBRE-DEL-REPO`
+4. Pegá la URL del Worker (`https://....workers.dev`) en `config.js` → `AI_ENDPOINT`. Subí el cambio a GitHub.
 
-## 2. Respuestas con IA (opcional, con un Worker de Cloudflare)
-La clave de Anthropic nunca va en la página: la guarda el Worker.
-1. Cuenta gratuita en Cloudflare → Workers & Pages → Create → Hello World → pegá el contenido de `worker/worker.js` → Deploy.
-2. En el Worker: Settings → Variables and Secrets:
-   - `ANTHROPIC_API_KEY` (tipo Secret): tu clave de console.anthropic.com. Poné un límite de gasto mensual allí.
-   - `ACCESS_CODE`: un código para los socios (se pide una sola vez en cada teléfono).
-   - `ALLOWED_ORIGIN`: `https://TU-USUARIO.github.io` (sin barra final ni ruta).
-3. Copiá la URL del Worker (`https://....workers.dev`) y pegala en `config.js`: `AI_ENDPOINT: "https://..."`. Subí el cambio.
+## 3. Agregar actas y otros documentos
+En la app: Documentos → Actas y más → "+ Agregar documento". Pedirá el código de administración. Subí el PDF o fotos de las hojas, tocá "Leer con IA", revisá el texto y publicá. Todos los socios los ven al instante y la IA los usa en sus respuestas. Eliminar también se hace ahí.
 
-## 3. Actualizar los documentos
-Los textos están en `data.json` (una entrada por artículo: `doc`, `num`, `title`, `text`). Editá, subí el cambio a GitHub y los socios ven la versión nueva al abrir la app.
-
-Nota: los textos fueron resumidos a partir de escaneos. Conviene revisarlos contra el papel antes de difundir.
+## 4. Actualizaciones
+- Reglamento y Estatuto: editá `data.json` en GitHub. La app y la IA toman el cambio solos (la IA puede tardar unos 5 minutos).
+- Cambios de la app: al subirlos, los teléfonos se actualizan solos al abrirla.
 
 ## Si no te deja instalar
-- Abrí el enlace en Chrome (Android) o Safari (iPhone). Desde WhatsApp, Facebook o Instagram el navegador interno no permite instalar: tocá ⋮ → "Abrir en el navegador".
-- Verificá en GitHub que existan `manifest.webmanifest`, `sw.js` y la carpeta `icons/` con sus 4 archivos (la carpeta a veces no sube al arrastrar).
-- La vista previa de claude.ai no se puede instalar; solo la versión de GitHub Pages.
-- iPhone: Compartir → "Agregar a inicio". Android: ⋮ → "Instalar app". El botón "Instalar" de la app muestra estos pasos.
+- Abrilo en Chrome o Safari (no desde WhatsApp/Facebook/Instagram).
+- Verificá que estén `manifest.webmanifest`, `sw.js` y la carpeta `icons/`.
+- iPhone: Compartir → "Agregar a inicio". Android: ⋮ → "Instalar app".

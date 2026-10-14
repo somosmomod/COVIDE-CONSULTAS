@@ -31,9 +31,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 #hero{display:grid;grid-template-rows:1fr;transition:grid-template-rows .7s cubic-bezier(.2,.8,.2,1),opacity .45s}
 #hero.gone{grid-template-rows:0fr;opacity:0}
 .hero-in{overflow:hidden;min-height:0}
-.panel{margin-top:10px;border-radius:26px;overflow:hidden;background:linear-gradient(var(--sky1),var(--sky2));padding:24px 22px 0}
-.panel h1{font:800 clamp(28px,7.4vw,42px)/1.04 var(--d);letter-spacing:-.03em;margin:0 0 10px;max-width:15ch;text-wrap:balance}
-.panel p{margin:0;max-width:44ch;opacity:.82}
+.panel{margin-top:10px;border-radius:26px;overflow:hidden;color:#fff;padding:26px 22px 22px;min-height:clamp(250px,62vw,340px);background:linear-gradient(180deg,rgba(6,18,38,.6) 0%,rgba(6,18,38,.1) 48%,rgba(6,18,38,.72) 100%),url(img/cerro.jpg) center 72%/cover}
+.panel h1{font:800 clamp(28px,7.4vw,42px)/1.04 var(--d);letter-spacing:-.03em;margin:0 0 10px;max-width:15ch;text-wrap:balance;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.panel p{margin:0;max-width:44ch;opacity:.94;text-shadow:0 1px 10px rgba(0,0,0,.5)}
 #scene{margin-top:10px}
 #scene svg{display:block;width:100%;height:auto;aspect-ratio:800/260}
 .sun{animation:rise 2.2s cubic-bezier(.2,.8,.2,1) both}
@@ -97,3 +97,10 @@ dialog p{margin:0 0 10px}
 @keyframes vt-in{from{clip-path:circle(0 at var(--vx,50%) var(--vy,0))}to{clip-path:circle(150vmax at var(--vx,50%) var(--vy,0))}}
 @media (max-width:480px){.brand small{display:none}.d .tx{padding-left:14px}}
 @media (prefers-reduced-motion:reduce){*,::before,::after{animation:none!important;transition:none!important}}
+blockquote{margin:0 0 8px;padding-left:12px;border-left:3px solid var(--sky)}
+.d .plate.w small{display:block}
+dialog input,dialog textarea{display:block;width:100%;margin:0 0 8px;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;background:var(--paper);color:var(--ink)}
+.row{display:flex;gap:8px;justify-content:flex-end}
+.pri{background:var(--tab);color:#fff;border-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto 0;height:380px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,color-mix(in srgb,var(--paper) 45%,transparent),var(--paper) 92%),url(img/cerro.jpg) center 55%/cover;opacity:.6}
+.linkb{background:none;border:0;color:var(--link);font:inherit;text-decoration:underline;padding:0}

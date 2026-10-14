@@ -1,3 +1,2 @@
-// Dejá AI_ENDPOINT vacío para usar solo la búsqueda local (gratis, sin claves).
-// Para respuestas redactadas con IA, pegá acá la URL de tu Worker (ver README.md).
+// URL base de tu Worker de Cloudflare (ver README.md). Sin Worker, la app usa solo la búsqueda local.
 window.COVIDE_CONFIG = { AI_ENDPOINT: "" };
